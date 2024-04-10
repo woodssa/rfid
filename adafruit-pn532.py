@@ -2,15 +2,17 @@
 # pip install adafruit-blinka
 # SPI
 
-# assign reset pin to digital pin D6 on board
 import board
 import busio
 from digitalio import DigitalInOut
 from adafruit_pn532.spi import PN532_SPI
 
 spi = busio.SPI(board.SCK, board.MOSI, board.MISO)
-cs_pin = DigitalInOut(board.D6)
+cs_pin = DigitalInOut(board.D5)
 pn532 = PN532_SPI(spi, cs_pin, debug=False)
+
+ic, ver, rev, support = pn532.firmware_version
+print("Found PN532 with firmware version: {0}.{1}".format(ver, rev))
 
 pn532.SAM_configuration()
 while True:
