@@ -1,4 +1,5 @@
 # pip3 install adafruit-circuitpython-pn532
+# SPI
 
 # assign reset pin to digital pin D6 on board
 import board
@@ -7,9 +8,6 @@ import time
 from digitalio import DigitalInOut
 from adafruit_pn532.i2c import PN532_I2C
 reset_pin = DigitalInOut(board.D6)
-
-# connect pin to p32 to avoid I2C clock stretching - raspberry pi
-req_pin = DigitalInOut(board.D12)
 
 # initialize I2C object
 i2c = busio.I2C(board.SCL, board.SDA)
